@@ -1,6 +1,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const employees = [];
+
+function init() {
+    promptManager();
+}
+
 // array of questions for user
 function promptManager() {
     inquirer
@@ -35,7 +41,13 @@ function promptManager() {
     
 })
 .catch(error => {
-    console.log('Unable to add team member. Please try again.')
-})
-
+    if(error.isTtyError) {
+        console.log('Team member could not be added. Please try again');
+      } else {
+        // Something else when wrong
+      }
+    });
 };
+
+// function call to initialize program
+init();
