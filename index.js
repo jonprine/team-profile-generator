@@ -1,3 +1,6 @@
+const Manager = require('./lib/Manager');
+const Render = require('./src/htmlrenderer');
+
 const inquirer = require('inquirer');
 const fs = require('fs');
 
@@ -35,9 +38,10 @@ function promptManager() {
 
 ])
 .then(answers => {
-    console.log(answers);
     const addManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerNumber);
     employees.push(addManager);
+    console.log(addManager);
+    Render(employees);
     
 })
 .catch(error => {
@@ -48,6 +52,7 @@ function promptManager() {
       }
     });
 };
+
 
 // function call to initialize program
 init();
