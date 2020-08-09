@@ -23,7 +23,7 @@ function promptManager() {
     {
         type: 'input',
         name: 'managerId',
-        message: 'What is the team manager\'s id?'
+        message: 'What is the team manager\'s ID number?'
     },
     {
         type: 'input',
@@ -32,13 +32,60 @@ function promptManager() {
     },
     {
         type: 'input',
-        name: 'managerNumber',
+        name: 'officeNumber',
         message: 'What is the team manager\'s office number?'
     },
+    {
+        type: 'list',
+        name: 'teamList',
+        message: 'Which type of team member would you like to add?',
+        choices: ['Engineer', 'Intern', 'None'],
+        default: 'None'
+    },
+    {
+        type: 'input',
+        name: 'engineerName',
+        message: 'What is the engineer\'s name?',
+    },
+    {
+        type: 'input',
+        name: 'engineerId',
+        message: 'What is the engineer\'s ID number?'
+    },
+    {
+        type: 'input',
+        name: 'engineerEmail',
+        message: 'What is the engineer\'s email address?'
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'What is the engineer\'s Github username?'
+    },
+    {
+        type: 'input',
+        name: 'internName',
+        message: 'What is your intern\'s name?'
+    },
+    {
+        type: 'input',
+        name: 'internId',
+        message: 'What is your intern\'s ID?'
+    },
+    {
+        type: 'input',
+        name: 'internEmail',
+        message: 'What is your intern\'s email?'
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: 'What is your intern\'s school?'
+    }
 
 ])
 .then(answers => {
-    const addManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerNumber);
+    const addManager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
     employees.push(addManager);
     console.log(addManager);
     Render(employees);
