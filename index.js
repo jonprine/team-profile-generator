@@ -5,7 +5,6 @@ const Render = require("./src/htmlrenderer");
 
 
 const inquirer = require("inquirer");
-const fs = require("fs");
 const renderEmployees = require("./src/htmlrenderer");
 
 const employees = [];

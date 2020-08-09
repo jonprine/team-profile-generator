@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 function renderEmployees(employees) {
     const html = [];
 
@@ -8,12 +10,14 @@ function renderEmployees(employees) {
         // push to overall page
 
     // Filter employees and take out engineer
+    employees.filter(e => e.getRole() === 'engineer');
 
         // create HTML card
 
         // push to overall page
 
     // Filter employees and take out intern
+    employees.filter(e => e.getRole() === 'intern');
 
         // create HTML card
 
