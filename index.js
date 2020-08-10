@@ -1,7 +1,9 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const renderEmployees = require("./src/htmlrenderer");
+
+const render = require('./src/htmlrenderer');
+
 
 const fs = require("fs");
 const inquirer = require("inquirer");
@@ -9,9 +11,14 @@ const inquirer = require("inquirer");
 
 const employees = [];
 
+
+
 function init() {
   promptManager();
+
 }
+  
+
 
 // array of questions for user
 
@@ -49,7 +56,7 @@ function promptManager() {
       );
       employees.push(addManager);
       console.log(addManager);
-      Render(employees);
+      render(employees);
       addNewMember();
     })
     .catch((error) => {
@@ -80,7 +87,8 @@ function addNewMember() {
       } else if (answers.teamList === "Intern") {
         addIntern();
       } else if (answers.teamList === "None") {
-        renderEmployees();
+         writeFile(employees);
+         console.log(employees);
       }
     })
     .catch((error) => {
@@ -126,7 +134,7 @@ function addEngineer() {
       );
       employees.push(addEngineer);
       console.log(addEngineer);
-      Render(employees);
+      render(employees);
       addNewMember();
     })
     .catch((error) => {
@@ -172,7 +180,7 @@ function addIntern() {
       );
       employees.push(addIntern);
       console.log(addIntern);
-      Render(employees);
+      render(employees);
       addNewMember();
     })
     .catch((error) => {
@@ -183,6 +191,19 @@ function addIntern() {
       }
     });
 }
+
+// function to generate index
+const writeFile = data => {
+  fs.writeFile('./dist/index.html', data, 
+  err => {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      console.log('Your team profile has been successfully created.')
+    }
+  } )
+};
 
 // function call to initialize program
 init();

@@ -1,0 +1,16 @@
+
+body {
+    padding-top: 40px;
+    font-family: 'Cambay', sans-serif;
+    color: seashell;
+  }
+
+.jumbotron {
+    padding: 30px;
+    background-color: rgb(220,20,60);
+}
+
+
+.list-group {
+    color: dodgerblue;
+}
