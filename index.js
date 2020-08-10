@@ -83,9 +83,9 @@ function addNewMember() {
     ])
     .then((answers) => {
       if (answers.teamList === "Engineer") {
-        addEngineer();
+        promptEngineer();
       } else if (answers.teamList === "Intern") {
-        addIntern();
+        promptIntern();
       } else if (answers.teamList === "None") {
         renderHTML();
         writeFile(holdEmployeeData);
@@ -102,7 +102,7 @@ function addNewMember() {
 }
 
 // if engineer is selected
-function addEngineer() {
+function promptEngineer() {
   inquirer
     .prompt([
       {
@@ -147,7 +147,7 @@ function addEngineer() {
 }
 
 // if intern is selected
-function addIntern() {
+function promptIntern() {
   inquirer
     .prompt([
       {

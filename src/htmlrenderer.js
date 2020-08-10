@@ -1,11 +1,6 @@
-function renderEmployees(employees) {
-  const html = [];
-
-  // Filter employees and take out manager
-  employees.filter((e) => e.getRole() === "manager");
-  // create HTML card
-  function generateManager(manager) {
-    return `
+// create HTML card
+function generateManager(manager) {
+  return `
         <div class="col-4 mt-4">
         <div class="card h-100">
             <div class="card-header">
@@ -23,19 +18,11 @@ function renderEmployees(employees) {
         </div>
     </div>
         `;
-  }
+}
 
-  // push to overall page
-  html.push(
-    employees
-      // Filter employees and take out engineer
-      .filter((employee) => employee.getRole() === "Manager")
-      .map((manager) => generateManager(manager))
-  );
-
-  // create HTML card
-  function generateEngineer(engineer) {
-    return `
+// create HTML card
+function generateEngineer(engineer) {
+  return `
     <div class="col-4 mt-4">
     <div class="card h-100">
         <div class="card-header">
@@ -55,55 +42,64 @@ function renderEmployees(employees) {
     </div>
     </div>
 `;
-  }
-  // push to overall page
-  html.push(
-    employees
-      .filter((employee) => employee.getRole() === "Engineer")
-      .map((engineer) => generateEngineer(engineer))
-      .join("")
-  );
-
-  // Filter employees and take out intern
-  employees.filter((e) => e.getRole() === "intern");
-
-  // create HTML card
-  function generateIntern(intern) {
-    return `
-    <div class="col-4 mt-4">
-        <div class="card h-100">
-        <div class="card-header">
-            <h3>${intern.name}</h3>
-            <h4>Intern</h4><i class="material-icons">
-
-            </i>
-        </div>
-
-        <div class="card-body">
-            <p class="id">ID: ${intern.id}</p>
-            <p class="email">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
-            <p class="school">School: ${intern.school}</p>
-        </div>
-        </div>
-    </div>
-
-    `;
-  }
-
-  // push to overall page
-  html.push(
-    employees
-      .filter((employee) => employee.getRole() === "Intern")
-      .map((intern) => generateIntern(intern))
-      .join("")
-  );
-
-  return html;
-  // call renderFullPage
-  renderFullPage(html);
 }
 
-function renderFullPage(cards) {
+// create HTML card
+function generateIntern(intern) {
+  return `
+        <div class="col-4 mt-4">
+            <div class="card h-100">
+            <div class="card-header">
+                <h3>${intern.name}</h3>
+                <h4>Intern</h4><i class="material-icons">
+    
+                </i>
+            </div>
+    
+            <div class="card-body">
+                <p class="id">ID: ${intern.id}</p>
+                <p class="email">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
+                <p class="school">School: ${intern.school}</p>
+            </div>
+            </div>
+        </div>
+    
+        `;
+}
+
+function renderEmployees(data) {
+  const html = [];
+
+  for (i = 0; i < data.length; i++) {
+    const employee = data[i];
+    const role = employee.getRole();
+
+    if (role === "Manager") {
+      const managerCard = generateManager(employee);
+
+      html.push(managerCard);
+    }
+
+    if (role === "Engineer") {
+      const engineerCard = generateEngineer(employee);
+
+      html.push(engineerCard);
+    }
+
+    if (role === "Intern") {
+      const internCard = generateIntern(employee);
+
+      html.push(internCard);
+    }
+  }
+
+  const employeeCards = html.join("");
+
+  const generateTeam = renderFullPage(employeeCards);
+  return generateTeam;
+}
+
+function renderFullPage(employeeCards) {
   // add cards onto entire HTML page
   return `
   <!DOCTYPE html>
@@ -133,7 +129,7 @@ function renderFullPage(cards) {
 
     <div class="row justify-content-center" id="team-cards">
      
-    ${renderEmployees(employees)}
+    ${employeeCards}
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -153,3 +149,30 @@ function renderFullPage(cards) {
 }
 
 module.exports = renderEmployees;
+
+//   // push to overall page
+//   html.push(
+//     employees
+//       // Filter employees and take out engineer
+//       .filter((employee) => employee.getRole() === "Manager")
+//       .map((manager) => generateManager(manager))
+//   );
+
+//   // push to overall page
+//   html.push(
+//     employees
+//       .filter((employee) => employee.getRole() === "Engineer")
+//       .map((engineer) => generateEngineer(engineer))
+//       .join("")
+//   );
+
+//   // Filter employees and take out intern
+//   employees.filter((e) => e.getRole() === "intern");
+
+//   // push to overall page
+//   html.push(
+//     employees
+//       .filter((employee) => employee.getRole() === "Intern")
+//       .map((intern) => generateIntern(intern))
+//       .join("")
+//   );
