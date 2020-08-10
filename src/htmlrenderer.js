@@ -68,7 +68,7 @@ function generateIntern(intern) {
 }
 
 function renderEmployees(data) {
-  const html = [];
+    html = [];
 
   for (i = 0; i < data.length; i++) {
     const employee = data[i];
