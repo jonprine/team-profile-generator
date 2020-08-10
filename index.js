@@ -10,6 +10,7 @@ const inquirer = require("inquirer");
 
 
 const employees = [];
+let holdEmployeeData = "";
 
 
 
@@ -56,7 +57,6 @@ function promptManager() {
       );
       employees.push(addManager);
       console.log(addManager);
-      render(employees);
       addNewMember();
     })
     .catch((error) => {
@@ -87,8 +87,9 @@ function addNewMember() {
       } else if (answers.teamList === "Intern") {
         addIntern();
       } else if (answers.teamList === "None") {
-         writeFile(employees);
-         console.log(employees);
+        renderHTML();
+        writeFile(holdEmployeeData);
+
       }
     })
     .catch((error) => {
@@ -134,7 +135,6 @@ function addEngineer() {
       );
       employees.push(addEngineer);
       console.log(addEngineer);
-      render(employees);
       addNewMember();
     })
     .catch((error) => {
@@ -180,7 +180,6 @@ function addIntern() {
       );
       employees.push(addIntern);
       console.log(addIntern);
-      render(employees);
       addNewMember();
     })
     .catch((error) => {
@@ -190,6 +189,10 @@ function addIntern() {
         // Something else when wrong
       }
     });
+}
+
+function renderHTML(){
+  holdEmployeeData = render(employees);
 }
 
 // function to generate index
