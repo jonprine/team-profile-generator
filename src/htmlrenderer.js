@@ -5,7 +5,7 @@ function generateManager(manager) {
         <div class="card h-100">
             <div class="card-header">
                 <h3>${manager.name}</h3>
-                <h4>Manager</h4><i class="material-icons">
+                <h4>Manager</h4>
 
                 </i>
             </div>
@@ -13,7 +13,7 @@ function generateManager(manager) {
             <div class="card-body">
                 <p class="id">${manager.id}</p>
                 <p class="email">email: <a href="mailto:${manager.email}">${manager.email}</a></p>
-                <p class="office">Office Number: ${manager.officeNumber}</p>
+                <p class="office">Office Number: ${manager.number}</p>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@ function generateEngineer(engineer) {
     <div class="card h-100">
         <div class="card-header">
             <h3>${engineer.name}</h3>
-            <h4>Engineer</h4><i class="material-icons">
+            <h4>Engineer</h4>
 
             </i>
         </div>
@@ -51,7 +51,7 @@ function generateIntern(intern) {
             <div class="card h-100">
             <div class="card-header">
                 <h3>${intern.name}</h3>
-                <h4>Intern</h4><i class="material-icons">
+                <h4>Intern</h4>
     
                 </i>
             </div>
