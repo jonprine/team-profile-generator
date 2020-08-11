@@ -11,6 +11,9 @@ User is asked a series of questions from a prompt about specific team members to
 * Node
 * Jest
 
+## Installation
+install inquirer and jest
+
 ## Contribution
 Made by Jon Prine
 
