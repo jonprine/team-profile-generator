@@ -17,6 +17,9 @@ install inquirer and jest
 ## Contribution
 Made by Jon Prine
 
+## Video Walkthrough
+https://drive.google.com/file/d/1fNYGYPvjGsGg7S7EoKvPyGrKw0XdyP-8/view
+
 ## Screenshots of Finished Page
 ![Team](src/images/screenshot1.png)
 ![Team](src/images/screenshot2.png)
